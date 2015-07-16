@@ -1,0 +1,116 @@
+<Window x:Class="uFLOPS_Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow"
+        Height="400 "
+        Width="650">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- 1st Container -->
+        <Border BorderBrush="Gray"
+                BorderThickness="4"
+                Margin="10"
+                Padding="5"
+                Grid.Column="0">
+            <StackPanel Margin="10">
+                <Label FontWeight="Bold"
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       Margin="0 10 0 10">uFLOPS Desktop</Label>
+
+                <GroupBox Header="Question Type">
+                    <StackPanel Margin="5 5 0 0">
+                        <RadioButton Name="radioButton_Addition"
+                                     GroupName="QuestionType"
+                                     Checked="radio_Checked">Addition</RadioButton>
+                        <RadioButton Name="radioButton_Subtraction"
+                                     GroupName="QuestionType"
+                                     Checked="radio_Checked">Subtraction</RadioButton>
+                        <RadioButton Name="radioButton_Multiplication"
+                                     GroupName="QuestionType"
+                                     Checked="radio_Checked">Multiplication</RadioButton>
+                        <RadioButton Name="radioButton_Division"
+                                     GroupName="QuestionType"
+                                     Checked="radio_Checked">Division</RadioButton>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Number of Questions">
+                    <TextBox Text="{Binding Path=NumberOfQuestions}"></TextBox>
+                </GroupBox>
+                <GroupBox Header="Highest Number">
+                    <TextBox Text="{Binding Path=HighestNumber}"></TextBox>
+                </GroupBox>
+                <GroupBox Header="Lowest Number">
+                    <TextBox Text="{Binding Path=LowestNumber}"></TextBox>
+                </GroupBox>
+                <Button Margin="10"
+                        Click="Button_Click_GenerateExam">Generate Exam!</Button>
+            </StackPanel>
+        </Border>
+
+        <!-- 2nd Container -->
+        <Border BorderBrush="Gray"
+                BorderThickness="4"
+                Margin="10"
+                Padding="5"
+                Grid.Column="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Button Name="equalsButton" Click="pressEquals" Grid.Column="2" Grid.Row="5" Margin="5">=</Button>
+                    <Button Name="zeroButton"   Click="pressNumber" Grid.Column="1" Grid.Row="5" Margin="5">0</Button>
+<!-- empty          <Button                                         Grid.Column="0" Grid.Row="5" Margin="5"> </Button> -->
+                    <Button Name="threeButton"  Click="pressNumber" Grid.Column="2" Grid.Row="4" Margin="5">3</Button>
+                    <Button Name="twoButton"    Click="pressNumber" Grid.Column="1" Grid.Row="4" Margin="5">2</Button>
+                    <Button Name="oneButton"    Click="pressNumber" Grid.Column="0" Grid.Row="4" Margin="5">1</Button>
+                    <Button Name="sixButton"    Click="pressNumber" Grid.Column="2" Grid.Row="3" Margin="5">6</Button>
+                    <Button Name="fiveButton"   Click="pressNumber" Grid.Column="1" Grid.Row="3" Margin="5">5</Button>
+                    <Button Name="fourButton"   Click="pressNumber" Grid.Column="0" Grid.Row="3" Margin="5">4</Button>
+                    <Button Name="nineButton"   Click="pressNumber" Grid.Column="2" Grid.Row="2" Margin="5">9</Button>
+                    <Button Name="eightButton"  Click="pressNumber" Grid.Column="1" Grid.Row="2" Margin="5">8</Button>
+                    <Button Name="sevenButton"  Click="pressNumber" Grid.Column="0" Grid.Row="2" Margin="5">7</Button>
+                    
+                    <GroupBox Header="Question" Grid.Row="0" Grid.ColumnSpan="3">
+                        <TextBlock Name="questionBlock" Text="{Binding Path=CurrentQuestion}"></TextBlock>
+                    </GroupBox>
+                    <GroupBox Header="Input" Grid.Row="1" Grid.ColumnSpan="3">
+                        <TextBlock Name="inputBlock" Text="{Binding Path=InputValue}" TextAlignment="Right"></TextBlock>
+                    </GroupBox>
+                </Grid>
+        </Border>
+
+        <!-- 3rd Container -->
+        <Border BorderBrush="Gray"
+                BorderThickness="4"
+                Margin="10"
+                Padding="5"
+                Grid.Column="2">
+            <GroupBox Header="Results">
+                <TextBlock Name="resultsBlock" 
+                           Text="{Binding Path=ExamResults}"
+                           TextWrapping="Wrap"></TextBlock>
+            </GroupBox>
+
+        </Border>
+
+
+
+    </Grid>
+</Window>
